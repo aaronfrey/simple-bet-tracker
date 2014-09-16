@@ -1,0 +1,11 @@
+.panel {
+	min-height: 165px;
+}
+
+.panel-title {
+	font-size: 15px;
+}
+
+.panel-body {
+	font-size: 20px;
+}

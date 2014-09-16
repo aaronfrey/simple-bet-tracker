@@ -121,7 +121,9 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'SoapBox\Formatter\FormatterServiceProvider'
+		// User Added
+		'SoapBox\Formatter\FormatterServiceProvider',
+		'Zizaco\Confide\ServiceProvider',
 
 	),
 
@@ -189,6 +191,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+		// User Added
+		'Confide' => 'Zizaco\Confide\Facade',
 
 	),
 

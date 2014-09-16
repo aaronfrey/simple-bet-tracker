@@ -6,6 +6,8 @@
 		<!-- Optional theme -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
+        <link rel="stylesheet" href="<?php public_path(); ?>/assets/css/custom.css">
+
 	</head>
     <body>
         <div class="container">

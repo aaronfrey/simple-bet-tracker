@@ -14,7 +14,7 @@
 
 	<div class="row">
 
-		@foreach($games as $game)
+		@foreach($pending_games as $game)
 
 		@if($game['gamestate']['@attributes']['status'] === 'Pre-Game')
 
@@ -43,6 +43,32 @@
 		@endif
 
 		@endforeach
+
+	</div>
+
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<h1>Current Bets</h1>
+
+			@if(count($current_games))
+
+			@foreach($current_games as $game)
+
+			@endforeach
+
+			@else
+
+			<div class="well">
+				You Have No Current Bets
+			</div>
+
+			@endif
+
+			</div>
+
+		</div>
 
 	</div>
 

@@ -6,7 +6,7 @@ class HomeController extends BaseController {
 	{
 		$games = []; 
 
-		$url = 'http://scores.nbcsports.com/ticker/data/gamesNEW.js.asp?jsonp=true&sport=NFL&period=2';
+		$url = 'http://scores.nbcsports.com/ticker/data/gamesNEW.js.asp?jsonp=true&sport=NFL&period=3';
 
 		$jsonp = file_get_contents($url);
 
@@ -20,7 +20,9 @@ class HomeController extends BaseController {
 			$games[] = Formatter::make($game_xml, 'xml')->to_array();
 		}
 
-		$this->data['games'] = $games;
+		$this->data['pending_games'] = $games;
+
+		$this->data['current_games'] = [];
 
 		return View::make('main', $this->data);
 	}

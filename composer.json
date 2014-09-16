@@ -5,7 +5,8 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-		"soapbox/laravel-formatter": "dev-master"
+		"soapbox/laravel-formatter": "dev-master",
+		"zizaco/confide": "~4.0@dev"
 	},
 	"autoload": {
 		"classmap": [
