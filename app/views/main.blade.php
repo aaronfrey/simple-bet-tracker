@@ -38,27 +38,35 @@
 
 					<hr>
 
-					<h5>Point Spread</h5>
+					<div class="bet-type" data-bet-type="pointspread">
 
-					<button class="btn btn-primary btn-block bet-option">
-						Take the {{ $game['visiting-team']['@attributes']['nickname'] }}
-					</button>
+						<h5>Point Spread</h5>
 
-					<button class="btn btn-primary btn-block bet-option">
-						Take the {{ $game['home-team']['@attributes']['nickname'] }}
-					</button>
+						<button class="btn btn-primary btn-block bet-option" data-team-id="">
+							Take the {{ $game['visiting-team']['@attributes']['nickname'] }}
+						</button>
+
+						<button class="btn btn-primary btn-block bet-option" data-team-id="">
+							Take the {{ $game['home-team']['@attributes']['nickname'] }}
+						</button>
+
+					</div>
 
 					<hr>
 
-					<h5>Moneyline</h5>
+					<div class="bet-type" data-bet-type="moneyline">
 
-					<button class="btn btn-primary btn-block bet-option">
-						Take the {{ $game['visiting-team']['@attributes']['nickname'] }}
-					</button>
+						<h5>Moneyline</h5>
 
-					<button class="btn btn-primary btn-block bet-option">
-						Take the {{ $game['home-team']['@attributes']['nickname'] }}
-					</button>
+						<button class="btn btn-primary btn-block bet-option" data-team-id="">
+							Take the {{ $game['visiting-team']['@attributes']['nickname'] }}
+						</button>
+
+						<button class="btn btn-primary btn-block bet-option" data-team-id="">
+							Take the {{ $game['home-team']['@attributes']['nickname'] }}
+						</button>
+
+					</div>
 
 					<hr>
 
@@ -66,7 +74,7 @@
 			</div>
 		</div>
 
-		<?php //echo '<pre>' . print_r($game, true) . '</pre>'; ?>
+		<?php echo '<pre>' . print_r($game, true) . '</pre>'; ?>
 
 		@endif
 
