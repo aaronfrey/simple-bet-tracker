@@ -40,11 +40,11 @@
 
 					<h5>Point Spread</h5>
 
-					<button class="btn btn-primary btn-block">
+					<button class="btn btn-primary btn-block bet-option">
 						Take the {{ $game['visiting-team']['@attributes']['nickname'] }}
 					</button>
 
-					<button class="btn btn-primary btn-block">
+					<button class="btn btn-primary btn-block bet-option">
 						Take the {{ $game['home-team']['@attributes']['nickname'] }}
 					</button>
 
@@ -52,11 +52,11 @@
 
 					<h5>Moneyline</h5>
 
-					<button class="btn btn-primary btn-block">
+					<button class="btn btn-primary btn-block bet-option">
 						Take the {{ $game['visiting-team']['@attributes']['nickname'] }}
 					</button>
 
-					<button class="btn btn-primary btn-block">
+					<button class="btn btn-primary btn-block bet-option">
 						Take the {{ $game['home-team']['@attributes']['nickname'] }}
 					</button>
 
@@ -74,30 +74,29 @@
 
 	</div>
 
-	<div class="row">
-
-		<div class="col-md-12">
-
-			<h1>Current Bets</h1>
-
-			@if(count($current_games))
-
-			@foreach($current_games as $game)
-
-			@endforeach
-
-			@else
-
-			<div class="well">
-				You Have No Current Bets
-			</div>
-
-			@endif
-
-			</div>
-
-		</div>
-
+	<div
+		id="bet-modal"
+		class="modal fade"
+		tabindex="-1"
+		role="dialog"
+		aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button
+						type="button"
+						class="close"
+						data-dismiss="modal">
+							<span aria-hidden="true">×</span>
+							<span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myLargeModalLabel">Large modal</h4>
+				</div>
+				<div class="modal-body">
+				...
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
 	</div>
 
 @stop
