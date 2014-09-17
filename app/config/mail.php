@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'smtp',
+	'driver' => 'mailgun',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => null, 'name' => null),
+	'from' => array('address' => 'aaron@sandbox6e449ff0de70487b8065d507596fcaa6.mailgun.org', 'name' => 'Aaron Frey'),
 
 	/*
 	|--------------------------------------------------------------------------

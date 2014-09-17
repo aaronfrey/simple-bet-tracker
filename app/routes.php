@@ -2,10 +2,10 @@
 
 Route::get('/', function()
 {
-    return Redirect::to('users/create');
+    return Redirect::to('games/pending');
 });
 
-Route::get('dashboard', array('before' => 'auth', 'uses' => 'HomeController@showMain'));
+Route::get('games/pending', array('before' => 'auth', 'uses' => 'HomeController@showMain'));
 
 // Confide routes
 Route::get('users/create', 'UsersController@create');

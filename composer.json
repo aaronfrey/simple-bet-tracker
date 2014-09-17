@@ -4,6 +4,7 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
+		"guzzlehttp/guzzle": "~4.0",
 		"laravel/framework": "4.2.*",
 		"soapbox/laravel-formatter": "dev-master",
 		"zizaco/confide": "~4.0@dev"
