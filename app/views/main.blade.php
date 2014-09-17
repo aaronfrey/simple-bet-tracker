@@ -6,7 +6,7 @@
 
 		<div class="col-md-12">
 
-			<h1>Pending Games</h1>
+			<h1>Pending {{ $sport }} Games</h1>
 
 		</div>
 
@@ -18,7 +18,7 @@
 
 		@if($game['gamestate']['@attributes']['status'] === 'Pre-Game')
 
-		<div class="col-sm-4">
+		<div class="col-md-4">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title text-center">
@@ -28,17 +28,45 @@
 						   $game['home-team']['@attributes']['nickname'] }}
 					</h3>
 				</div>
-				<div class="panel-body text-center">
-					{{ $game['gamestate']['@attributes']['gamedate'] . ' at ' . 
-					   $game['gamestate']['@attributes']['gametime'] . ' on ' .
-					   $game['gamestate']['@attributes']['tv'] }}
+				<div class="panel-body">
 
-					{{ Form::open(array('url' => 'foo/bar')) }}
-   						{{ Form::hidden('gamecode', $game['@attributes']['gamecode']) }}
-					{{ Form::close() }}
+					<div class="text-center">
+						{{ $game['gamestate']['@attributes']['gamedate'] . ' at ' . 
+						   $game['gamestate']['@attributes']['gametime'] . ' on ' .
+						   $game['gamestate']['@attributes']['tv'] }}
+					</div>
+
+					<hr>
+
+					<h5>Point Spread</h5>
+
+					<button class="btn btn-primary btn-block">
+						Take the {{ $game['visiting-team']['@attributes']['nickname'] }}
+					</button>
+
+					<button class="btn btn-primary btn-block">
+						Take the {{ $game['home-team']['@attributes']['nickname'] }}
+					</button>
+
+					<hr>
+
+					<h5>Moneyline</h5>
+
+					<button class="btn btn-primary btn-block">
+						Take the {{ $game['visiting-team']['@attributes']['nickname'] }}
+					</button>
+
+					<button class="btn btn-primary btn-block">
+						Take the {{ $game['home-team']['@attributes']['nickname'] }}
+					</button>
+
+					<hr>
+
 				</div>
 			</div>
 		</div>
+
+		<?php //echo '<pre>' . print_r($game, true) . '</pre>'; ?>
 
 		@endif
 

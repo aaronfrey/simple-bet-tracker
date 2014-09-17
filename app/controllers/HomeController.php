@@ -2,25 +2,13 @@
 
 class HomeController extends BaseController {
 
-	public function showMain()
+	public function showMain($sport = 'NFL')
 	{
-		$games = []; 
+		$repo = App::make('GameRepository');
 
-		$url = 'http://scores.nbcsports.com/ticker/data/gamesNEW.js.asp?jsonp=true&sport=NFL&period=3';
+		$this->data['sport'] = $sport;
 
-		$jsonp = file_get_contents($url);
-
-		$json_str = str_replace(');', '', str_replace('shsMSNBCTicker.loadGamesData(', '', $jsonp));
-
-		$json_parsed = json_decode($json_str);
-
-		foreach($json_parsed->games as $game)
-		{
-			$game_xml = simplexml_load_string($game);
-			$games[] = Formatter::make($game_xml, 'xml')->to_array();
-		}
-
-		$this->data['pending_games'] = $games;
+        $this->data['pending_games'] = $repo->getPendingGames($sport, '3');
 
 		$this->data['current_games'] = [];
 
