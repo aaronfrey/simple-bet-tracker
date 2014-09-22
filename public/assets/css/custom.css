@@ -18,3 +18,16 @@ body {
 	margin-top: 30px;
 	margin-bottom: 0;
 }
+
+.plusminus label {
+	min-width: 35px;
+}
+
+.small {
+	width: 60%;
+	margin-left: 8px;
+}
+
+#pointspread {
+	overflow: auto;
+}
