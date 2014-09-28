@@ -16,7 +16,7 @@
 
 		@foreach($pending_games as $game)
 
-		@if($game['gamestate']['@attributes']['status'] === 'Pre-Game')
+		@if($game['gamestate']['@attributes']['status'] !== 'Final')
 
 		<div class="col-md-4">
 			<div class="panel panel-default">
@@ -133,23 +133,39 @@
 							<div class="col-md-3">
 								<div id="pointspread">
 									<h4>Point Spread</h4>
-									<div class="btn-group pull-left plusminus" data-toggle="buttons">
+									<!-- <div class="btn-group pull-left plusminus" data-toggle="buttons"> -->
+									<div class="btn-group pull-left plusminus">
 										<label class="btn btn-primary active">
-											<input type="radio" name="plusminus_pointspread" value="+" checked> +
+											<input
+												type="radio"
+												name="plusminus_pointspread"
+												value="+"
+												checked> +
 										</label>
 										<label class="btn btn-primary">
-											<input type="radio" name="plusminus_pointspread" value="-"> -
+											<input
+												type="radio"
+												name="plusminus_pointspread"
+												value="-"> -
 										</label>
 									</div>
 									{{ Form::text('point_spread', '', array('class' => 'form-control pull-left small')) }}
 								</div>
 								<h4>Multiplier</h4>
-								<div class="btn-group pull-left plusminus" data-toggle="buttons">
+								<!-- <div class="btn-group pull-left plusminus" data-toggle="buttons"> -->
+								<div class="btn-group pull-left plusminus">
 									<label class="btn btn-primary active">
-										<input type="radio" name="plusminus_multiplier" value="+" checked> +
+										<input
+											type="radio"
+											name="plusminus_multiplier"
+											value="+"
+											checked> +
 									</label>
 									<label class="btn btn-primary">
-										<input type="radio" name="plusminus_multiplier" value="-"> -
+										<input
+											type="radio"
+											name="plusminus_multiplier"
+											value="-"> -
 									</label>
 								</div>
 								{{ Form::text('multiplier', '',
@@ -159,7 +175,7 @@
 								<h4>Bet Amount</h4>
 								<div class="input-group">
 							      <div class="input-group-addon">$</div>
-							      {{ Form::text('bet', '', array('class' => 'form-control calculate')) }}
+							      {{ Form::text('bet_amount', '', array('class' => 'form-control calculate')) }}
 							    </div>
 
 								<h4>Win Potential</h4>
@@ -176,7 +192,7 @@
 						{{ Form::hidden('sport') }}
 						{{ Form::hidden('game_code') }}
 						{{ Form::hidden('bet_type') }}
-						{{ Form::hidden('team_to_win') }}
+						{{ Form::hidden('team') }}
 
 					{{ Form::close() }}					
 

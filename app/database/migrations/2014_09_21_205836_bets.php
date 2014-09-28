@@ -22,8 +22,8 @@ class Bets extends Migration {
 			$table->string('sport');
 			$table->string('game_code');
 			$table->string('bet_type');
-		    $table->string('team_to_win');
-		    $table->string('point_spread');
+		    $table->string('team');
+		    $table->decimal('point_spread', 5, 2);
 		    $table->integer('bet_amount');
 		    $table->integer('multiplier');
 		    $table->integer('win_potential');
