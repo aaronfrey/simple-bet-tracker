@@ -54,10 +54,10 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
-			'database'  => 'bettracker',
-			'username'  => 'root',
-			'password'  => 'root',
+			'host'      => 'simplebettracker.mysql.eu1.frbit.com',
+			'database'  => 'simplebettracker',
+			'username'  => 'simplebettracker',
+			'password'  => 'Lk4SnnXx2k_caeZQ',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
