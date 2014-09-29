@@ -5,9 +5,10 @@ class BetsController extends BaseController {
 	public function store()
 	{
 		$input = Input::all();
+		$user = Confide::user();
 
 		$bet = new Bet;
-		$bet->user_id = Confide::user()->id;
+		$bet->user_id = $user->id;
 		$bet->sport = $input['sport'];
 		$bet->game_code = $input['game_code'];
 		$bet->bet_type = $input['bet_type'];
@@ -20,6 +21,10 @@ class BetsController extends BaseController {
 		}
 
 		$bet->bet_amount = $input['bet_amount'] * 100;
+
+		// Subtract the bet amount from the users current money
+		$user->current_money -= $bet->bet_amount;
+		$user->save();
 
 		$bet->multiplier = $input['plusminus_multiplier'] === '-' ?
 				-$input['multiplier'] : $input['multiplier'];
@@ -119,7 +124,7 @@ class BetsController extends BaseController {
 					{
 						// Payout will be just the initial bet
 						$payout = $bet->bet_amount;
-						
+
 						// If the game is over, record win and set bet to final
 						if($bet_object->game['status'] === 'Final')
 						{	

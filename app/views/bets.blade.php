@@ -9,13 +9,15 @@
 			<h1 class="pull-left">Current Bets</h1>
 
 			<div class="pull-right">
-				<h5>Real: ${{ money_format('%i', $user->current_money / 100) }}</h5>
-				<h5>Potential: ${{ money_format('%i', $potential_money / 100) }}</h5>
+				<h5>Current: ${{ money_format('%i', $user->current_money / 100) }}</h5>
+				<h5>Real Time: ${{ money_format('%i', $potential_money / 100) }}</h5>
 			</div>
 
 		</div>
 
 	</div>
+
+	<br>
 
 	<div class="row">
 
