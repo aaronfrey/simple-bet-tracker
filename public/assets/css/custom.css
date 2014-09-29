@@ -31,3 +31,15 @@ body {
 #pointspread {
 	overflow: auto;
 }
+
+#pointspread input[type=text],
+#multiplier input[type=text] {
+	width: 45%;
+}
+
+#bet-modal input[type=submit] {
+	height: 100px;
+	width: 100px;
+	padding: 20px;
+	margin-top: 40px;
+}

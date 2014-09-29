@@ -12,6 +12,8 @@
 
 	</div>
 
+	<br>
+
 	<div class="row">
 
 		@foreach($pending_games as $game)
@@ -151,25 +153,27 @@
 									</div>
 									{{ Form::text('point_spread', '', array('class' => 'form-control pull-left small')) }}
 								</div>
-								<h4>Multiplier</h4>
-								<!-- <div class="btn-group pull-left plusminus" data-toggle="buttons"> -->
-								<div class="btn-group pull-left plusminus">
-									<label class="btn btn-primary active">
-										<input
-											type="radio"
-											name="plusminus_multiplier"
-											value="+"
-											checked> +
-									</label>
-									<label class="btn btn-primary">
-										<input
-											type="radio"
-											name="plusminus_multiplier"
-											value="-"> -
-									</label>
+								<div id="multiplier">
+									<h4>Multiplier</h4>
+									<!-- <div class="btn-group pull-left plusminus" data-toggle="buttons"> -->
+									<div class="btn-group pull-left plusminus">
+										<label class="btn btn-primary active">
+											<input
+												type="radio"
+												name="plusminus_multiplier"
+												value="+"
+												checked> +
+										</label>
+										<label class="btn btn-primary">
+											<input
+												type="radio"
+												name="plusminus_multiplier"
+												value="-"> -
+										</label>
+									</div>
+									{{ Form::text('multiplier', '',
+										array('class' => 'form-control pull-left small calculate')) }}
 								</div>
-								{{ Form::text('multiplier', '',
-									array('class' => 'form-control pull-left small calculate')) }}
 							</div>
 							<div class="col-md-3">
 								<h4>Bet Amount</h4>

@@ -9,8 +9,8 @@
 			<h1 class="pull-left">Current Bets</h1>
 
 			<div class="pull-right">
-				<h5>Current: ${{ money_format('%i', $user->current_money / 100) }}</h5>
-				<h5>Real Time: ${{ money_format('%i', $potential_money / 100) }}</h5>
+				<h4>Current: ${{ money_format('%i', $user->current_money / 100) }}</h4>
+				<h4>Real Time: ${{ money_format('%i', $potential_money / 100) }}</h4>
 			</div>
 
 		</div>
@@ -46,7 +46,7 @@
     				<div class="row">
     					<div class="col-md-12 text-center">
     						@if($bet_object->bet['bet_type'] === 'pointspread')
-    							<h4>{{ $bet_object->picked_team['nickname'] }} {{ $bet_object->bet->point_spread > 0 ? '+' : '' }}{{ $bet_object->bet->point_spread }}</h4>
+    							<h4>{{ $bet_object->picked_team['nickname'] }} {{ $bet_object->bet->point_spread > 0 ? '+' : '' }}{{ (float) $bet_object->bet->point_spread }}</h4>
     						@endif
     					</div>
     				</div>
