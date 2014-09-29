@@ -6,9 +6,11 @@ Route::get('/', function()
 });
 
 Route::get('games/pending', array('before' => 'auth', 'uses' => 'HomeController@showMain'));
+Route::get('bets/current', array('before' => 'auth', 'uses' => 'BetsController@showCurrentBets'));
 
 // Bets
 Route::post('bets', 'BetsController@store');
+
 
 // Confide routes
 Route::get('users/create', 'UsersController@create');

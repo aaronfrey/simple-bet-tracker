@@ -48,14 +48,14 @@
 
 						<button
 							class="btn btn-primary btn-block bet-option"
-							data-team-id="{{ $sport }}-{{ $game['visiting-team']['@attributes']['id'] }}"
+							data-team-id="{{ $game['visiting-team']['@attributes']['id'] }}"
 							data-team-display="{{ $game['visiting-team']['@attributes']['nickname'] }}">
 							Take the {{ $game['visiting-team']['@attributes']['nickname'] }}
 						</button>
 
 						<button
 							class="btn btn-primary btn-block bet-option"
-							data-team-id="{{ $sport }}-{{ $game['home-team']['@attributes']['id'] }}"
+							data-team-id="{{ $game['home-team']['@attributes']['id'] }}"
 							data-team-display="{{ $game['home-team']['@attributes']['nickname'] }}">
 							Take the {{ $game['home-team']['@attributes']['nickname'] }}
 						</button>
@@ -70,14 +70,14 @@
 
 						<button
 							class="btn btn-primary btn-block bet-option"
-							data-team-id="{{ $sport }}-{{ $game['visiting-team']['@attributes']['id'] }}"
+							data-team-id="{{ $game['visiting-team']['@attributes']['id'] }}"
 							data-team-display="{{ $game['visiting-team']['@attributes']['nickname'] }}">
 							Take the {{ $game['visiting-team']['@attributes']['nickname'] }}
 						</button>
 
 						<button
 							class="btn btn-primary btn-block bet-option"
-							data-team-id="{{ $sport }}-{{ $game['home-team']['@attributes']['id'] }}"
+							data-team-id="{{ $game['home-team']['@attributes']['id'] }}"
 							data-team-display="{{ $game['home-team']['@attributes']['nickname'] }}">
 							Take the {{ $game['home-team']['@attributes']['nickname'] }}
 						</button>

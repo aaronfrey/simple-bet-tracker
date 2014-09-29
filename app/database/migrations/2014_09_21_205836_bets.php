@@ -19,6 +19,7 @@ class Bets extends Migration {
 
 		Schema::table('bets', function($table)
 		{
+			$table->integer('user_id')->unsigned();
 			$table->string('sport');
 			$table->string('game_code');
 			$table->string('bet_type');
@@ -28,6 +29,7 @@ class Bets extends Migration {
 		    $table->integer('multiplier');
 		    $table->integer('win_potential');
 		    $table->boolean('won')->default(false);
+		    $table->boolean('final')->default(false);
 		    $table->timestamps();
 		});
 	}

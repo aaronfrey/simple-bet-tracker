@@ -17,7 +17,8 @@ class GameRepository
         foreach($json_parsed->games as $game)
         {
             $game_xml = simplexml_load_string($game);
-            $games[] = Formatter::make($game_xml, 'xml')->to_array();
+            $game_array = Formatter::make($game_xml, 'xml')->to_array();
+            $games[$game_array['@attributes']['gamecode']] = $game_array;
         }
 
         return $games;

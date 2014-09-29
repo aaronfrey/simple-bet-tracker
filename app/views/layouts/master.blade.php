@@ -39,7 +39,7 @@
                             User <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Current Bets</a></li>
+                            <li><a href="/bets/current">Current Bets</a></li>
                             <li class="divider"></li>
                             <li><a href="#">Profile</a></li>
                         </ul>
