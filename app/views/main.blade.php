@@ -120,7 +120,7 @@
 				</div>
 				<div class="modal-body">
 				
-					{{ Form::open(array('action' => 'BetsController@store')) }}
+					{{ Form::open(array('action' => 'BetsController@store', 'id' => 'bet-form')) }}
 
 						<div class="row">
 

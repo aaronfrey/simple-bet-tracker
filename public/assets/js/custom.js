@@ -38,7 +38,7 @@ $(function() {
 		betModal.modal('show');
 	});
 
-	$('form').on('submit', function(event) {
+	$('#bet-form').on('submit', function(event) {
   	event.preventDefault();
 
   	var form = $(this);
