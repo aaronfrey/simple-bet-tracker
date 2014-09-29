@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://localhost',
+	'url' => 'http://simplebettracker.eu1.frbit.net',
 
 	/*
 	|--------------------------------------------------------------------------
