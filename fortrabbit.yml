@@ -1,0 +1,14 @@
+---
+version: 1
+strategy: fullsync
+excludes:
+    - app/storage/
+    - uploads/
+    - vendor/
+composer:
+
+    # make sure composer runs after each push
+    mode: always
+
+    # make composer use install, not update
+    method: install
