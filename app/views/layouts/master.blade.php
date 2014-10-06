@@ -39,9 +39,9 @@
                             User <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="/bets/current">Current Bets</a></li>
+                            <li><a href="{{{ URL::to('/bets/current') }}}">Current Bets</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="{{{ URL::to('/users/profile') }}}">Profile</a></li>
                         </ul>
                     </li>
                     <li><a href="{{{ URL::to('/users/logout') }}}">Logout</a></li>

@@ -194,4 +194,26 @@ class UsersController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function profile()
+    {
+        $this->data['user'] = Confide::user();
+        return View::make('user.profile', $this->data);
+    }
+
+    public function update()
+    {
+        $validator = Validator::make(
+            array(
+                'name' => 'Dayle',
+                'password' => 'lamepassword',
+                'email' => 'email@example.com'
+            ),
+            array(
+                'name' => 'required',
+                'password' => 'required|min:8',
+                'email' => 'required|email|unique:users'
+            )
+        );
+    }
 }

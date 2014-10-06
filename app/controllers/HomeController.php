@@ -8,7 +8,7 @@ class HomeController extends BaseController {
 
 		$this->data['sport'] = $sport;
 
-        $this->data['pending_games'] = $repo->getPendingGames($sport, '4');
+        $this->data['pending_games'] = $repo->getPendingGames($sport, Config::get('custom.nfl_week'));
 
 		$this->data['current_games'] = [];
 

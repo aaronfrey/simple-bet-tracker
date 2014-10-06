@@ -53,7 +53,7 @@ class BetsController extends BaseController {
 
 			// Get all of the games
 			$repo = App::make('GameRepository');
-			$pending_games = $repo->getPendingGames('NFL', '4');
+			$pending_games = $repo->getPendingGames('NFL', Config::get('custom.nfl_week'));
 
 			foreach($current_bets as $bet)
 			{
@@ -120,7 +120,7 @@ class BetsController extends BaseController {
 						}
 					}
 					// If this is a current push bet
-					else if($adjusted_team_score === $opposing_team['score'])
+					else if(intval($adjusted_team_score) === intval($opposing_team['score']))
 					{
 						// Payout will be just the initial bet
 						$payout = $bet->bet_amount;
