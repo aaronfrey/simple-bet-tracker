@@ -38,7 +38,7 @@ class BetsController extends BaseController {
 		$bet->save();
 	}
 
-	public function showCurrentBets($size = 'expanded')
+	public function showCurrentBets($size = 'small')
 	{
 		// Set the bet display size in the view
 		$this->data['size'] = $size;
