@@ -2,6 +2,11 @@
 
 class BaseController extends Controller {
 
+	function __construct()
+	{       
+       $this->data['user'] = Confide::user();
+   	}
+
 	/**
 	 * Setup the layout used by the controller.
 	 *

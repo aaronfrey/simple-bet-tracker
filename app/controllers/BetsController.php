@@ -2,13 +2,17 @@
 
 class BetsController extends BaseController {
 
+	function __construct()
+	{
+       parent::__construct();
+   	}
+
 	public function store()
 	{
 		$input = Input::all();
-		$user = Confide::user();
 
 		$bet = new Bet;
-		$bet->user_id = $user->id;
+		$bet->user_id = $this->data['user']->id;
 		$bet->sport = $input['sport'];
 		$bet->game_code = $input['game_code'];
 		$bet->bet_type = $input['bet_type'];
@@ -23,8 +27,8 @@ class BetsController extends BaseController {
 		$bet->bet_amount = $input['bet_amount'] * 100;
 
 		// Subtract the bet amount from the users current money
-		$user->current_money -= $bet->bet_amount;
-		$user->save();
+		$this->data['user']->current_money -= $bet->bet_amount;
+		$this->data['user']->save();
 
 		$bet->multiplier = $input['plusminus_multiplier'] === '-' ?
 				-$input['multiplier'] : $input['multiplier'];
@@ -38,9 +42,8 @@ class BetsController extends BaseController {
 	{
 		// Set the bet display size in the view
 		$this->data['size'] = $size;
-		
-		// Get the current user
-		$this->data['user'] = Confide::user();
+
+		$this->data['bet_objects'] = [];
 
 		// Initialize the potential money that can be won as the current money the user has
 		$this->data['potential_money'] = $this->data['user']->current_money;
@@ -52,7 +55,9 @@ class BetsController extends BaseController {
 
 		if($current_bets)
 		{
-			$this->data['bet_objects'] = [];
+			$win_bet_objects = [];
+			$push_bet_objects = [];
+			$lose_bet_objects = [];
 
 			// Get all of the games
 			$repo = App::make('GameRepository');
@@ -106,20 +111,11 @@ class BetsController extends BaseController {
 						$payout = $bet->bet_amount + $bet->win_potential;
 						$this->data['potential_money'] += $payout;
 
-						// If the game is over, record win and set bet to final
-						if($bet_object->game['status'] === 'Final')
-						{	
-							$bet->won = true;
-							$bet->final = true;
-							$bet->save();
-
-							$this->data['user']->current_money += $payout;
-							$this->data['user']->save();
-						}
-						else
+						// If the game is not over, update winning bets
+						if(!$this->isGameFinal($bet_object, true, $payout))
 						{
 							$bet_object->status = 'panel-success';
-							$this->data['bet_objects'][] = $bet_object;
+							$win_bet_objects[] = $bet_object;
 						}
 					}
 					// If this is a current push bet
@@ -129,41 +125,68 @@ class BetsController extends BaseController {
 						$payout = $bet->bet_amount;
 						$this->data['potential_money'] += $payout;
 
-						// If the game is over, record win and set bet to final
-						if($bet_object->game['status'] === 'Final')
-						{	
-							$bet->won = true;
-							$bet->final = true;
-							$bet->save();
-
-							$this->data['user']->current_money += $payout;
-							$this->data['user']->save();
-						}
-						else
+						// If the game is not over, update pushed bets
+						if(!$this->isGameFinal($bet_object, true, $payout))
 						{
 							$bet_object->status = 'panel-warning';
-							$this->data['bet_objects'][] = $bet_object;
+							$push_bet_objects[] = $bet_object;
 						}
 					}
 					// If this is a current losing bet
 					else
 					{
-						// If the game is over, set bet to final
-						if($bet_object->game['status'] === 'Final')
-						{	
-							$bet->final = true;
-							$bet->save();
-						}
-						else
+						// If the game is not over, update losing bets
+						if(!$this->isGameFinal($bet_object))
 						{
 							$bet_object->status = 'panel-danger';
-							$this->data['bet_objects'][] = $bet_object;
+							$lose_bet_objects[] = $bet_object;
 						}
 					}
 				}
 			}
+
+			$win_bet_objects = $this->sortGamesEndingFirst($win_bet_objects);
+			$push_bet_objects = $this->sortGamesEndingFirst($push_bet_objects);
+			$lose_bet_objects = $this->sortGamesEndingFirst($lose_bet_objects);			
+
+			$this->data['bet_objects'] = array_merge($win_bet_objects, $push_bet_objects, $lose_bet_objects);
 		}
 
 		return View::make('bets', $this->data);
+	}
+
+	private function isGameFinal($bet_object, $won = false, $payout = 0)
+	{
+		// If the game is over, record win and set bet to final
+		if($bet_object->game['status'] === 'Final')
+		{	
+			$bet_object->bet->won = $won;
+			$bet_object->bet->final = true;
+			$bet_object->bet->save();
+
+			if($won)
+			{
+				$this->data['user']->current_money += $payout;
+				$this->data['user']->save();
+			}
+
+			return true;
+		}
+
+		return false;
+	}
+
+	private function sortGamesEndingFirst(Array $games)
+	{
+		usort($games, function($a, $b) {
+			$result = $a->game['display_status2'] - $b->game['display_status2'];
+			if($result === 0)
+			{
+				return strtotime($a->game['display_status1']) - strtotime($b->game['display_status1']);
+			}
+			return $result;
+		});
+
+		return $games;
 	}
 }
