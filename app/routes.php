@@ -9,7 +9,7 @@ Route::get('games/pending', array('before' => 'auth', 'uses' => 'HomeController@
 
 // Bets
 Route::post('bets', 'BetsController@store');
-Route::get('bets/current', array('before' => 'auth', 'uses' => 'BetsController@showCurrentBets'));
+Route::get('bets/current/{size?}', array('before' => 'auth', 'uses' => 'BetsController@showCurrentBets'));
 
 
 // Confide routes

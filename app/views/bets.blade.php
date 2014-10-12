@@ -21,6 +21,58 @@
 
 	<div class="row">
 
+        @if($size === 'small')
+
+        @foreach($bet_objects as $bet_object)
+
+        <div class="col-md-12">
+
+            <div class="panel panel-small {{ $bet_object->status }}">
+
+                <div class="panel-heading">
+
+                    <div class="row">
+
+                        <div class="col-xs-4">
+                            {{ $bet_object->game_title }}
+                        </div>
+
+                        <div class="col-xs-2">
+                            {{$bet_object->game['display_status2'] }}
+                            {{$bet_object->game['display_status1'] }}
+                        </div>
+
+                        <div class="col-xs-2">
+                            @if($bet_object->bet['bet_type'] === 'pointspread')
+                                {{ $bet_object->picked_team['nickname'] }}
+                                {{ $bet_object->bet->point_spread > 0 ? '+' : '' }}{{ (float) $bet_object->bet->point_spread }}
+                            @endif
+                        </div>
+
+                        <div class="col-xs-2 text-center">
+                            {{ $bet_object->visiting_team['nickname'] }}<br>
+                            {{  $bet_object->visiting_team['score'] ?
+                                $bet_object->visiting_team['score'] : 0 }}
+                        </div>
+
+                        <div class="col-xs-2 text-center">
+                            {{ $bet_object->home_team['nickname'] }}<br>
+                            {{  $bet_object->home_team['score'] ?
+                                $bet_object->home_team['score'] : 0 }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        @endforeach
+
+        @else
+
 		@foreach($bet_objects as $bet_object)
 
 		<div class="col-md-6">
@@ -57,6 +109,8 @@
 		</div>
 
 		@endforeach
+
+        @endif
 
 	</div>
 

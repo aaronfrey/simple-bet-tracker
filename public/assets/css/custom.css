@@ -43,3 +43,13 @@ body {
 	padding: 20px;
 	margin-top: 40px;
 }
+
+.panel-small {
+	min-height: 0;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.panel-small .row div:nth-child(-n+3) {
+	margin-top: 12px;
+}

@@ -2,6 +2,6 @@
 
 return array(
 
-	'nfl_week' => 5,
+	'nfl_week' => 6,
 
 );

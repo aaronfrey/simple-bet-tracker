@@ -34,8 +34,11 @@ class BetsController extends BaseController {
 		$bet->save();
 	}
 
-	public function showCurrentBets()
+	public function showCurrentBets($size = 'expanded')
 	{
+		// Set the bet display size in the view
+		$this->data['size'] = $size;
+		
 		// Get the current user
 		$this->data['user'] = Confide::user();
 
@@ -101,6 +104,7 @@ class BetsController extends BaseController {
 					{
 						// Payout will be the initial bet plus winnings
 						$payout = $bet->bet_amount + $bet->win_potential;
+						$this->data['potential_money'] += $payout;
 
 						// If the game is over, record win and set bet to final
 						if($bet_object->game['status'] === 'Final')
@@ -115,7 +119,6 @@ class BetsController extends BaseController {
 						else
 						{
 							$bet_object->status = 'panel-success';
-							$this->data['potential_money'] += $payout;
 							$this->data['bet_objects'][] = $bet_object;
 						}
 					}
@@ -124,6 +127,7 @@ class BetsController extends BaseController {
 					{
 						// Payout will be just the initial bet
 						$payout = $bet->bet_amount;
+						$this->data['potential_money'] += $payout;
 
 						// If the game is over, record win and set bet to final
 						if($bet_object->game['status'] === 'Final')
@@ -138,9 +142,6 @@ class BetsController extends BaseController {
 						else
 						{
 							$bet_object->status = 'panel-warning';
-
-							// Payout will be just the initial bet
-							$this->data['potential_money'] += $payout;
 							$this->data['bet_objects'][] = $bet_object;
 						}
 					}
@@ -165,5 +166,4 @@ class BetsController extends BaseController {
 
 		return View::make('bets', $this->data);
 	}
-
 }
