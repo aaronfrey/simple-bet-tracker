@@ -179,7 +179,7 @@ class BetsController extends BaseController {
 	private function sortGamesEndingFirst(Array $games)
 	{
 		usort($games, function($a, $b) {
-			$result = $a->game['display_status2'] - $b->game['display_status2'];
+			$result = $b->game['display_status2'] - $a->game['display_status2'];
 			if($result === 0)
 			{
 				return strtotime($a->game['display_status1']) - strtotime($b->game['display_status1']);
