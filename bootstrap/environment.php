@@ -1,5 +1,5 @@
 <?php
 
-return 'production';
+return 'local';
 
 /* End of bootstrap/environment.php */

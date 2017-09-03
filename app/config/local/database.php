@@ -23,7 +23,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'bettracker',
+			'database'  => 'simplebettracker',
 			'username'  => 'root',
 			'password'  => 'root',
 			'charset'   => 'utf8',
