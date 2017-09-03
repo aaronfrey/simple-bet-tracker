@@ -8,7 +8,7 @@ class HomeController extends BaseController {
 
 		$this->data['sport'] = $sport;
 
-        $this->data['pending_games'] = $repo->getPendingGames($sport, '4');
+        $this->data['pending_games'] = $repo->getPendingGames($sport, '1');
 
 		$this->data['current_games'] = [];
 

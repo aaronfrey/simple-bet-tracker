@@ -53,7 +53,7 @@ class BetsController extends BaseController {
 
 			// Get all of the games
 			$repo = App::make('GameRepository');
-			$pending_games = $repo->getPendingGames('NFL', '4');
+			$pending_games = $repo->getPendingGames('NFL', '1');
 
 			foreach($current_bets as $bet)
 			{
